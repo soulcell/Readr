@@ -1,0 +1,25 @@
+
+
+p {
+    margin: 2rem 0;
+
+    font-size: 0.815rem;
+    color: var(--ion-color-medium);
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+ion-button {
+    display: block;
+    margin: 4rem 0;
+}
+
+ion-content {
+    --padding-start: 2rem;
+    --padding-top: 2rem;
+    --padding-end: 2rem;
+    --padding-bottom: 2rem;
+}

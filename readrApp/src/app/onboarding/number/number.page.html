@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h1>My number is</h1>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4">
+        <ion-select interface="popover" placeholder="Country">
+          <ion-select-option value="+370">LT +370</ion-select-option>
+          <ion-select-option value="+375">BY +375</ion-select-option>
+          <ion-select-option value="+380">UA +380</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col>
+        <ion-input placeholder="000-00-00"></ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <p>
+    We will send a text with a verification code.<br>
+    Message and data rates may apply.
+  </p>
+  <ion-button shape="round" [routerLink]="['/code']">
+    CONTINUE
+  </ion-button>
+</ion-content>

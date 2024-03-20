@@ -1,0 +1,7 @@
+{
+  "name": "readrApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

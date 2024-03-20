@@ -1,0 +1,65 @@
+#logo {
+    font-size: 192px;
+    color: var(--ion-color-primary-contrast);
+}
+
+ion-content {
+    --background: linear-gradient(30deg, var(--ion-color-primary), var(--ion-color-secondary));
+}
+
+p {
+    color: var(--ion-color-light);
+
+    a {
+        color: inherit;
+        text-decoration: underline;
+    }
+}
+
+.container {
+    background-image: linear-gradient(30deg, var(--ion-color-primary), var(--ion-color-secondary));
+
+    height: 100%;
+    text-align: center;
+
+    #logo-box {
+        height: 66%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #button-box {
+        
+        p {
+            font-size: 0.875rem;
+        }
+
+        ion-button {
+            margin-top: 1.5rem;
+        }
+
+        
+    }
+
+    #footer-text {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        bottom: 16px;
+
+        font-size: 0.7rem;
+    }
+
+    
+}
+
+ion-button {
+    --border-width: 1.5px;
+    font-weight: 600;
+    --padding-top: 1rem;
+    --padding-bottom: 1rem;
+    --padding-start: 2rem;
+    --padding-end: 2rem;
+}

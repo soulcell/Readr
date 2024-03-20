@@ -1,0 +1,18 @@
+<div class="card">
+  <figure class="card__content">
+    <img [src]="book.imageUrl">
+    <div class="overlay"></div>
+    <div class="card__title">
+      <h1>
+        {{book.title}}
+      </h1>
+      <h3>
+        by {{book.authorName}}
+      </h3>
+      <p>
+        <ion-icon name="location-outline" />
+        {{book.distanceMeters / 1000}} kilometers away
+      </p>
+    </div>
+  </figure>
+</div>
