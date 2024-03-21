@@ -17,4 +17,16 @@ export const routes: Routes = [
     path: 'code',
     loadComponent: () => import('./onboarding/code/code.page').then( m => m.CodePage)
   },
+  {
+    path: 'myname',
+    loadComponent: () => import('./onboarding/myname/myname.page').then( m => m.MynamePage)
+  },
+  {
+    path: 'genres',
+    loadComponent: () => import('./onboarding/genres/genres.page').then( m => m.GenresPage)
+  },
+  {
+    path: 'add-books',
+    loadComponent: () => import('./add-books/add-books.page').then( m => m.AddBooksPage)
+  },
 ];

@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h1>My first name is</h1>
+    <ion-input type="text" inputmode="text" helperText="This is how it will appear in Readr"></ion-input>
+  <ion-button class="readr-button" shape="round" [routerLink]="['/genres']">
+    CONTINUE
+  </ion-button>
+</ion-content>

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h1>Add books</h1>
+  <p>Add books you'd like to share</p>
+  <div class="books-container">
+    <app-book-add-small-card *ngFor="let book of books" [book]="book"></app-book-add-small-card>
+  </div>
+  <ion-button class="readr-button" shape="round">
+    CONTINUE
+  </ion-button>
+</ion-content>

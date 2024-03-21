@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-button slot="end" fill="clear">
+      SKIP
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h1>Genres</h1>
+  <p>Let us know what genres you're interested in by adding it to your profile</p>
+  <div id="genrebox">
+    <app-genre-chip *ngFor="let genre of genres" [title]="genre"/>
+  </div>
+  <ion-button class="readr-button" shape="round">
+    CONTINUE
+  </ion-button>
+</ion-content>

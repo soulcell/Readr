@@ -1,11 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
-  <h1>My number is</h1>
-    <ion-input placeholder="000-00-00"></ion-input>
-  <p>
-    We will send a text with a verification code.<br>
-    Message and data rates may apply.
-  </p>
-  <ion-button shape="round">
+  <h1>My code is</h1>
+    <ion-input type="number" inputmode="numeric" placeholder="0 0 0 0 0 0" helperText="6 number code sent to your phone"></ion-input>
+  <ion-button class="readr-button" shape="round" [routerLink]="['/myname']">
     CONTINUE
   </ion-button>
 </ion-content>

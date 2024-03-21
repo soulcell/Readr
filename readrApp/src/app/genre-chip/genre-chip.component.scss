@@ -1,0 +1,17 @@
+ion-chip {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 2rem;
+    border-width: 3px;
+    font-weight: 700;
+
+    border-color: var(--ion-color-medium);
+    --color: var(--ion-color-medium);
+    
+}
+
+:host(.checked) > ion-chip {
+    border-color: var(--ion-color-primary);
+    --color: var(--ion-color-primary);
+    --background: var(--ion-color-primary-rgb);
+}

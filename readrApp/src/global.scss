@@ -39,10 +39,12 @@ html {
     --ion-font-family: 'Inter', 'Roboto', sans-serif;
 }
 
-ion-button {
+ion-button.readr-button {
     --background: linear-gradient(90deg, var(--ion-color-primary), var(--ion-color-secondary));
     --padding-top: 1rem;
     --padding-bottom: 1rem;
     font-weight: 700
 }
+
+
 
