@@ -15,7 +15,7 @@
   <div id="genrebox">
     <app-genre-chip *ngFor="let genre of genres" [title]="genre"/>
   </div>
-  <ion-button class="readr-button" shape="round">
+  <ion-button class="readr-button" shape="round" [routerLink]="['/add-books']">
     CONTINUE
   </ion-button>
 </ion-content>

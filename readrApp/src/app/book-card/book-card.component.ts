@@ -16,14 +16,6 @@ export class BookCardComponent {
   constructor() 
   {
     addIcons({ locationOutline })
-
-    this.book = {
-      id: 0,
-      title: "The Picture of Dorian Gray",
-      authorName: "Oscar Wilde",
-      imageUrl: "/assets/test/the-picture-of-dorian-gray-9781625587534_hr.jpg",
-      distanceMeters: 1000
-    }
   }
 
   @Input()

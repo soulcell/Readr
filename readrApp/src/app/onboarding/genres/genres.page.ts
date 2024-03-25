@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { GenreChipComponent } from 'src/app/genre-chip/genre-chip.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-genres',
   templateUrl: './genres.page.html',
   styleUrls: ['./genres.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, GenreChipComponent]
+  imports: [IonicModule, CommonModule, FormsModule, GenreChipComponent, RouterModule]
 })
 export class GenresPage {
 

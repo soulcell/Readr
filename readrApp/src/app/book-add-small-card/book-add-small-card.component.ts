@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { addOutline } from 'ionicons/icons';
@@ -17,6 +17,10 @@ export class BookAddSmallCardComponent {
 
   @Input()
   book?: BookModel
+
+  @Output()
+  buttonClick = new EventEmitter();
+
 
   @HostBinding('class.has-book')
   get has_book() { return this.book || undefined; }

@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <h1>Add the book</h1>
+  <ion-input helperText="Title" [(ngModel)]="book.title"></ion-input>
+  <ion-input helperText="Author" [(ngModel)]="book.authorName"></ion-input>
+  <ion-button class="readr-button" shape="round" (click)="confirm()">
+    CONTINUE
+  </ion-button>
+</ion-content>

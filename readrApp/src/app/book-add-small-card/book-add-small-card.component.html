@@ -1,6 +1,7 @@
 <div class="small-book">
-  <img *ngIf="book" [src]="book.imageUrl">
-  <ion-button size="small" shape="circle" class="bottom-right-corner">
+  <img *ngIf="book && book.imageUrl" [src]="book.imageUrl" class="book-title">
+  <div *ngIf="book && !book.imageUrl" class="title">{{book.title}}</div>
+  <ion-button size="small" shape="circle" class="bottom-right-corner" (click)="this.buttonClick.emit()">
     <ion-icon slot="icon-only" name="add-outline"></ion-icon>
   </ion-button>
 </div>

@@ -1,4 +1,55 @@
 #main-logo {
-    font-size: 64px;
+    font-size: 6rem;
     color: var(--ion-color-primary);
+}
+
+ion-content {
+    position: relative;
+}
+
+app-book-card {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 90%;
+    height: 90%;
+}
+
+app-book-card:nth-child(1) {
+    z-index: 2;
+}
+
+app-book-card:nth-child(2) {
+    z-index: 1;
+}
+
+:host.panning {
+    app-book-card:nth-child(1) {
+
+        transform: translate(
+        calc(var(--card-translation-x) * 1px), 
+        calc(var(--card-translation-y) * 1px)) 
+        rotate(calc(var(--card-rotation) * 1deg));
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: var(--card-gradient);
+            opacity: min(var(--card-gradient-opacity), 0.5);
+
+        }
+    }
+}
+    
+
+ion-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

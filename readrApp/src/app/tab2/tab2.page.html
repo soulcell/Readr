@@ -1,11 +1,11 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar class="ion-text-center">
     <ion-icon id="main-logo" src="../../assets/fullLogo.svg"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content class="ion-padding">
 
-  <app-book-card/>
+  <app-book-card *ngFor="let book of cards" [book]="book" (pan)="handlePan($event)" (panend)="handlePanEnd($event)"/>
   
 </ion-content>
