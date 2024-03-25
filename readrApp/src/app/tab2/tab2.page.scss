@@ -53,3 +53,31 @@ ion-content {
     justify-content: center;
     align-items: center;
 }
+
+div.oops {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        font-weight: 700;
+    }
+
+    p {
+        padding: 0 1rem;
+        font-weight: 600;
+        margin: 32px 0;
+        color: var(--ion-color-medium);
+        text-align: center;
+    }
+
+    ion-button {
+        --color: #F3D677;
+
+        ion-icon {
+            margin: 0.5rem;
+        }
+    }
+}

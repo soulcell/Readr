@@ -7,5 +7,18 @@
 <ion-content class="ion-padding">
 
   <app-book-card *ngFor="let book of cards" [book]="book" (pan)="handlePan($event)" (panend)="handlePanEnd($event)"/>
+
+  <div *ngIf="cards.length === 0" class="oops">
+    <h1>
+      Oops!
+    </h1>
+    <p>
+      We can no longer find books near you, please try again later
+    </p>
+    <ion-button fill="clear" size="large" [routerLink]="['/']">
+      <ion-icon slot="start" name="refresh-circle-outline"></ion-icon>
+      Try again
+    </ion-button>
+  </div>
   
 </ion-content>

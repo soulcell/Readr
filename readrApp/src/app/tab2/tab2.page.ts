@@ -1,11 +1,13 @@
-import { Component, ElementRef, HostBinding, Injectable, QueryList, ViewChildren } from '@angular/core';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonIcon } from '@ionic/angular/standalone';
+import { Component, ElementRef, HostBinding, QueryList, ViewChildren } from '@angular/core';
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { BookCardComponent } from '../book-card/book-card.component';
 import { HammerModule } from '@angular/platform-browser';
 import BookModel from 'src/models/book-model';
 import { CommonModule } from '@angular/common';
-import { defaultEquals } from '@angular/core/primitives/signals';
+import { IonicModule } from '@ionic/angular';
+import { addIcons } from 'ionicons';
+import { refreshCircleOutline } from 'ionicons/icons';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
@@ -13,7 +15,7 @@ import { defaultEquals } from '@angular/core/primitives/signals';
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonHeader, IonToolbar, IonTitle, IonContent, ExploreContainerComponent, BookCardComponent, IonIcon, HammerModule],
+  imports: [CommonModule, IonicModule, RouterModule, ExploreContainerComponent, BookCardComponent, HammerModule],
 })
 export class Tab2Page {
 
@@ -88,20 +90,22 @@ export class Tab2Page {
   handlePanEnd(event: any) {
     this.isPanning = false;
 
-    if (event.deltaX > 40)
+    if (event.deltaX > 100)
     {
       this.cards.shift();
       return;
     }
 
-    if (event.deltaX < -40)
+    if (event.deltaX < -100)
     {
       this.cards.shift();
       return;
     }
   }
 
-  constructor() {}
+  constructor() {
+    addIcons({refreshCircleOutline})
+  }
 
 }
 
