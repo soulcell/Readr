@@ -1,12 +1,11 @@
 import { Component, HostBinding, Input } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
-
+import { IonChip } from '@ionic/angular/standalone';
 @Component({
   selector: 'app-genre-chip',
   templateUrl: './genre-chip.component.html',
   styleUrls: ['./genre-chip.component.scss'],
   standalone: true,
-  imports: [IonicModule]
+  imports: [IonChip]
 })
 export class GenreChipComponent {
 

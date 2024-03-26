@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
-import { ModalController } from '@ionic/angular/standalone';
+import { IonButton, IonButtons, IonContent, IonHeader, IonInput, IonToolbar, ModalController } from '@ionic/angular/standalone';
 import BookModel from 'src/models/book-model';
 
 @Component({
@@ -9,7 +8,7 @@ import BookModel from 'src/models/book-model';
   templateUrl: './add-book-manually-modal.component.html',
   styleUrls: ['./add-book-manually-modal.component.scss'],
   standalone: true,
-  imports: [IonicModule, FormsModule],
+  imports: [FormsModule, IonHeader, IonToolbar, IonButtons, IonButton, IonContent, IonInput],
 })
 export class AddBookManuallyModalComponent {
 

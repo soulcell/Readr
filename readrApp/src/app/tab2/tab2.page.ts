@@ -4,10 +4,10 @@ import { BookCardComponent } from '../book-card/book-card.component';
 import { HammerModule } from '@angular/platform-browser';
 import BookModel from 'src/models/book-model';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { refreshCircleOutline } from 'ionicons/icons';
 import { RouterModule } from '@angular/router';
+import { IonButton, IonContent, IonHeader, IonIcon, IonToolbar } from '@ionic/angular/standalone';
 
 
 @Component({
@@ -15,7 +15,11 @@ import { RouterModule } from '@angular/router';
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
   standalone: true,
-  imports: [CommonModule, IonicModule, RouterModule, ExploreContainerComponent, BookCardComponent, HammerModule],
+  imports: [
+    CommonModule, RouterModule, ExploreContainerComponent, BookCardComponent, 
+    HammerModule, IonButton, IonIcon, IonButton,
+    IonHeader, IonToolbar, IonContent
+  ],
 })
 export class Tab2Page {
 
@@ -47,7 +51,7 @@ export class Tab2Page {
       id: 0,
       title: "The Picture of Dorian Gray",
       authorName: "Oscar Wilde",
-      imageUrl: "/assets/test/the-picture-of-dorian-gray-9781625587534_hr.jpg",
+      imageUrl: "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781625587534/the-picture-of-dorian-gray-9781625587534_hr.jpg",
       distanceMeters: 1000
     },
     {

@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 import { BookAddSmallCardComponent } from '../book-add-small-card/book-add-small-card.component';
 import BookModel from 'src/models/book-model';
-import { ModalController } from '@ionic/angular/standalone';
+import { IonBackButton, IonButtons, IonContent, IonHeader, IonToolbar, ModalController } from '@ionic/angular/standalone';
 import { AddBookOptionsModalComponent } from './add-book-options-modal/add-book-options-modal.component';
 import { AddBookManuallyModalComponent } from './add-book-manually-modal/add-book-manually-modal.component';
 import { RouterModule } from '@angular/router';
@@ -15,7 +14,7 @@ import { RouterModule } from '@angular/router';
   templateUrl: './add-books.page.html',
   styleUrls: ['./add-books.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, BookAddSmallCardComponent, RouterModule]
+  imports: [CommonModule, FormsModule, BookAddSmallCardComponent, RouterModule, IonHeader, IonToolbar, IonButtons, IonBackButton, IonContent]
 })
 export class AddBooksPage {
 

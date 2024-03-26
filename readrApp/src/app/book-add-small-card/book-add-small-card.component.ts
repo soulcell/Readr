@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonButton, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { addOutline } from 'ionicons/icons';
 import BookModel from 'src/models/book-model';
@@ -10,7 +10,7 @@ import BookModel from 'src/models/book-model';
   templateUrl: './book-add-small-card.component.html',
   styleUrls: ['./book-add-small-card.component.scss'],
   standalone: true,
-  imports: [CommonModule, IonicModule]
+  imports: [CommonModule, IonButton, IonIcon]
 })
 export class BookAddSmallCardComponent {
 

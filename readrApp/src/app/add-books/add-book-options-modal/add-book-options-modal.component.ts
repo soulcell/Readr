@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicModule, ModalController } from '@ionic/angular';
+import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonTitle, IonToolbar, ModalController } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { camera, image } from 'ionicons/icons'
 
@@ -8,7 +8,7 @@ import { camera, image } from 'ionicons/icons'
   templateUrl: './add-book-options-modal.component.html',
   styleUrls: ['./add-book-options-modal.component.scss'],
   standalone: true,
-  imports: [IonicModule],
+  imports: [IonHeader, IonToolbar, IonButtons, IonButton, IonTitle, IonContent, IonItem, IonIcon, IonLabel],
 })
 export class AddBookOptionsModalComponent {
 
