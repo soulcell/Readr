@@ -15,7 +15,7 @@
     <p>
       We can no longer find books near you, please try again later
     </p>
-    <ion-button fill="clear" size="large" [routerLink]="['/']">
+    <ion-button fill="clear" size="large" (click)="loadBooks()">
       <ion-icon slot="start" name="refresh-circle-outline"></ion-icon>
       Try again
     </ion-button>
