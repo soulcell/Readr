@@ -8,25 +8,29 @@
 
 <ion-content [fullscreen]="true">
   <h1>My number is</h1>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="4">
-        <ion-select interface="popover" placeholder="Country">
-          <ion-select-option value="+370">LT +370</ion-select-option>
-          <ion-select-option value="+375">BY +375</ion-select-option>
-          <ion-select-option value="+380">UA +380</ion-select-option>
-        </ion-select>
-      </ion-col>
-      <ion-col>
-        <ion-input placeholder="000-00-00"></ion-input>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <p>
-    We will send a text with a verification code.<br>
-    Message and data rates may apply.
-  </p>
-  <ion-button class="readr-button" shape="round" [routerLink]="['/code']">
-    CONTINUE
-  </ion-button>
+  <form #form="ngForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <ion-select interface="popover" placeholder="Country" ngModel name="countryCode" required>
+            <ion-select-option 
+              *ngFor="let countryCode of this.countryPhoneCodes" 
+              [value]="countryCode.code">
+              {{countryCode.countryShortName}} {{countryCode.code}}
+            </ion-select-option>
+          </ion-select>
+        </ion-col>
+        <ion-col>
+          <ion-input placeholder="00000000" name="localNumber" [(ngModel)]="localNumber" pattern="[0-9]{7,10}" required></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <p>
+      We will send a text with a verification code.<br>
+      Message and data rates may apply.
+    </p>
+    <ion-button class="readr-button" shape="round" [routerLink]="['/code']" [disabled]="form.invalid">
+      CONTINUE
+    </ion-button>
+  </form>
 </ion-content>

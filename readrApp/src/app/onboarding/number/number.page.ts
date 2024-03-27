@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { 
   IonBackButton, IonButtons, IonCol, IonContent,
   IonGrid, IonHeader, IonInput, IonRow, IonSelect,
-  IonSelectOption, IonToolbar 
+  IonSelectOption, IonToolbar, IonButton
 } from '@ionic/angular/standalone';
+import { CountryPhoneCode, countryPhoneCodes } from 'src/consts/country-phone-codes';
 
 @Component({
   selector: 'app-number',
@@ -17,10 +18,16 @@ import {
     CommonModule, FormsModule, RouterModule, IonHeader, 
     IonToolbar, IonButtons, IonBackButton, IonContent, 
     IonGrid, IonRow, IonCol, IonSelect, IonSelectOption, 
-    IonInput
+    IonInput, IonButton
   ]
 })
 export class NumberPage {
+
+  countryPhoneCodes: Array<CountryPhoneCode> = countryPhoneCodes;
+
+  localNumber: string = '';
+
+  numberPhoneCode: string = '';
 
   constructor() { }
 
