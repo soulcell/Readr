@@ -8,9 +8,11 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
   <h1>Add the book</h1>
-  <ion-input helperText="Title" [(ngModel)]="book.title"></ion-input>
-  <ion-input helperText="Author" [(ngModel)]="book.authorName"></ion-input>
-  <ion-button class="readr-button" shape="round" (click)="confirm()">
-    CONTINUE
-  </ion-button>
+  <form #form="ngForm">
+    <ion-input helperText="Title" [(ngModel)]="book.title" name="title" required></ion-input>
+    <ion-input helperText="Author" [(ngModel)]="book.authorName" name="authorName"  required></ion-input>
+    <ion-button class="readr-button" shape="round" (click)="confirm()" [disabled]="form.invalid">
+      CONTINUE
+    </ion-button>
+  </form>
 </ion-content>
