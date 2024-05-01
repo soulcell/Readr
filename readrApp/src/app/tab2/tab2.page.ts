@@ -2,7 +2,7 @@ import { Component, ElementRef, HostBinding, OnInit, QueryList, ViewChildren } f
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { BookCardComponent } from '../book-card/book-card.component';
 import { HammerModule } from '@angular/platform-browser';
-import BookModel from 'src/models/book-model';
+import BookModel from 'src/models/book';
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { refreshCircleOutline } from 'ionicons/icons';
@@ -97,24 +97,33 @@ export class Tab2Page implements OnInit {
     this.cards = [
       {
         id: 0,
-        title: "The Picture of Dorian Gray",
-        authorName: "Oscar Wilde",
-        imageUrl: "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781625587534/the-picture-of-dorian-gray-9781625587534_hr.jpg",
+        bookTitle: {
+          id: 0,
+          title: "The Picture of Dorian Gray",
+          author: "Oscar Wilde",
+          coverUrl: "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781625587534/the-picture-of-dorian-gray-9781625587534_hr.jpg",
+        },
         distanceMeters: 1000
       },
       {
-        id: 2,
-        title: "The Great Gatsby",
-        authorName: "F. Scott Fitzgerald",
-        imageUrl: "https://i0.wp.com/americanwritersmuseum.org/wp-content/uploads/2018/02/CK-3.jpg?resize=267%2C400&ssl=1",
-        distanceMeters: 500
+        id: 0,
+        bookTitle: {
+          id: 0,
+          title: "The Picture of Dorian Gray",
+          author: "Oscar Wilde",
+          coverUrl: "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781625587534/the-picture-of-dorian-gray-9781625587534_hr.jpg",
+        },
+        distanceMeters: 1000
       },
       {
-        id: 3,
-        title: "The Glass Bead Game",
-        authorName: "Hermann Hesse",
-        imageUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386922806i/16634.jpg",
-        distanceMeters: 1400
+        id: 0,
+        bookTitle: {
+          id: 0,
+          title: "The Picture of Dorian Gray",
+          author: "Oscar Wilde",
+          coverUrl: "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781625587534/the-picture-of-dorian-gray-9781625587534_hr.jpg",
+        },
+        distanceMeters: 1000
       },
     ]
   }

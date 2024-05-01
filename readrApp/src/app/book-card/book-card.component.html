@@ -1,19 +1,21 @@
 
   <figure class="card__content">
-    <img [src]="book.imageUrl" [alt]="book.title">
+    <img [src]="book.bookTitle.coverUrl" [alt]="book.bookTitle.title">
     <div class="overlay_choice"></div>
     <div class="overlay"></div>
     <div class="card__title">
       <h1>
-        {{book.title}}
+        {{book.bookTitle.title}}
       </h1>
       <h3>
-        by {{book.authorName}}
+        by {{book.bookTitle.author}}
       </h3>
-      <p>
-        <ion-icon name="location-outline" />
-        {{book.distanceMeters / 1000}} kilometers away
-      </p>
+      @if (book.distanceMeters !== undefined) {
+        <p>
+          <ion-icon name="location-outline" />
+          {{book.distanceMeters / 1000}} kilometers away
+        </p>
+      }
     </div>
   </figure>
 

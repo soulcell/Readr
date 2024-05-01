@@ -3,7 +3,7 @@ import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/co
 import { IonButton, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { addOutline } from 'ionicons/icons';
-import BookModel from 'src/models/book-model';
+import BookModel from 'src/models/book';
 
 @Component({
   selector: 'app-book-add-small-card',

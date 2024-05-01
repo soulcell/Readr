@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { 
   IonBackButton, IonButtons, IonCol, IonContent,
   IonGrid, IonHeader, IonInput, IonRow, IonSelect,
   IonSelectOption, IonToolbar, IonButton
 } from '@ionic/angular/standalone';
 import { CountryPhoneCode, countryPhoneCodes } from 'src/consts/country-phone-codes';
+import { AuthService } from 'src/app/services/auth.service';
+import { USER } from 'src/consts/local-storage';
 
 @Component({
   selector: 'app-number',
@@ -29,6 +31,15 @@ export class NumberPage {
 
   numberPhoneCode: string = '';
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
+
+  continueButton() {
+    this.authService.getSecurityCode(this.numberPhoneCode + this.localNumber)
+      .subscribe(res => {
+        if (res) {
+          this.router.navigate(['/code']);
+        }
+      });   
+  }
 
 }

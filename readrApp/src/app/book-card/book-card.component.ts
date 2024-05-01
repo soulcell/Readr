@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import BookModel from '../../models/book-model';
+import BookModel from '../../models/book';
 import { IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { locationOutline } from 'ionicons/icons';

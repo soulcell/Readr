@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonInput, IonToolbar } from '@ionic/angular/standalone';
+import { AuthService } from 'src/app/services/auth.service';
+import { catchError, tap } from 'rxjs';
 
 @Component({
   selector: 'app-code',
@@ -13,6 +15,16 @@ import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonInput, 
 })
 export class CodePage {
 
-  constructor() { }
+  code: string = ''
+
+  constructor(private authService: AuthService, private router: Router) { }
+
+  continueButton() {
+    this.authService.checkSecurityCode(this.code)
+      .subscribe({
+        next: _ => this.router.navigate(['/myname']),
+        error: err => console.error(err)
+      });
+  }
 
 }

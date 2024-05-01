@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { IonChip } from '@ionic/angular/standalone';
 @Component({
   selector: 'app-genre-chip',
@@ -15,10 +15,15 @@ export class GenreChipComponent {
   @HostBinding('class.checked')
   isChecked: boolean = false;
 
+  @Output()
+  toggledEvent = new EventEmitter<boolean>()
+
   constructor() { }
 
   toggle() {
     this.isChecked = !this.isChecked
+
+    this.toggledEvent.emit(this.isChecked);
   }
 
 }

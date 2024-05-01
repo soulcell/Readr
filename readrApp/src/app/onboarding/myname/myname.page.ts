@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonInput, IonToolbar } from '@ionic/angular/standalone';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-myname',
@@ -13,6 +14,14 @@ import { IonBackButton, IonButton, IonButtons, IonContent, IonHeader, IonInput, 
 })
 export class MynamePage {
 
-  constructor() { }
+  userName: string = '';
+
+  constructor(private authService: AuthService, private router: Router) { }
+
+  continueButton() {
+    this.authService.setUserName(this.userName).subscribe({
+      next: _ => this.router.navigate(['/genres'])
+    })
+  }
 
 }

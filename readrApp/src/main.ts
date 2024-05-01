@@ -8,6 +8,9 @@ import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
 
 import 'hammerjs';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { authInterceptor } from './app/interceptors/authInterceptor';
+
 
 if (environment.production) {
   enableProdMode();
@@ -22,5 +25,6 @@ bootstrapApplication(AppComponent, {
     }),
     provideRouter(routes),
     importProvidersFrom(HammerModule),
+    provideHttpClient(withInterceptors([authInterceptor]))
   ],
 });

@@ -12,7 +12,7 @@
   <div class="books-container">
     <app-book-add-small-card *ngFor="let book of books; index as i" [book]="book" (buttonClick)="addOrRemoveBookToSlot(i)"></app-book-add-small-card>
   </div>
-  <ion-button class="readr-button" shape="round" [routerLink]="['/']">
+  <ion-button class="readr-button" shape="round" [disabled]="!books.some(isTrue)" (click)="continueButton()">
     CONTINUE
   </ion-button>
 </ion-content>

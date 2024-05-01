@@ -9,8 +9,8 @@
 <ion-content [fullscreen]="true">
   <h1>My first name is</h1>
   <form #form="ngForm">
-    <ion-input type="text" inputmode="text" helperText="This is how it will appear in Readr" name="name" ngModel required pattern="\w{2,20}"></ion-input>
-    <ion-button class="readr-button" shape="round" [routerLink]="['/genres']" [disabled]="form.invalid">
+    <ion-input type="text" inputmode="text" helperText="This is how it will appear in Readr" name="name" [(ngModel)]="this.userName" required pattern="\w{2,20}"></ion-input>
+    <ion-button class="readr-button" shape="round" (click)="continueButton()" [disabled]="form.invalid">
       CONTINUE
     </ion-button>
   </form>

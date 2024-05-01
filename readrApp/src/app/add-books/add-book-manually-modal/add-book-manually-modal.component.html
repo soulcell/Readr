@@ -9,8 +9,13 @@
 <ion-content [fullscreen]="true" class="ion-padding">
   <h1>Add the book</h1>
   <form #form="ngForm">
-    <ion-input helperText="Title" [(ngModel)]="book.title" name="title" required></ion-input>
-    <ion-input helperText="Author" [(ngModel)]="book.authorName" name="authorName"  required></ion-input>
+    <ion-input placeholder="Title" [(ngModel)]="bookTitle.title" name="title" required></ion-input>
+    <ion-input placeholder="Author" [(ngModel)]="bookTitle.author" name="authorName"  required></ion-input>
+    <ion-select placeholder="Select genre" [(ngModel)]="bookTitle.genre" name="genre">
+      @for (genre of this.genres; track $index) {
+        <ion-select-option [value]="genre">{{genre.name}}</ion-select-option>
+      }
+    </ion-select>
     <ion-button class="readr-button" shape="round" (click)="confirm()" [disabled]="form.invalid">
       CONTINUE
     </ion-button>

@@ -9,8 +9,8 @@
 <ion-content [fullscreen]="true">
   <h1>My code is</h1>
   <form #form="ngForm">
-    <ion-input type="number" inputmode="numeric" placeholder="000000" name="code" ngModel required pattern="[0-9]{6}" helperText="6 number code sent to your phone"></ion-input>
-    <ion-button class="readr-button" shape="round" [routerLink]="['/myname']" [disabled]="form.invalid">
+    <ion-input inputmode="numeric" placeholder="000000" name="code" [(ngModel)]="code" required pattern="[0-9]{6}" helperText="6 number code sent to your phone"></ion-input>
+    <ion-button class="readr-button" shape="round" (click)="continueButton()" [disabled]="form.invalid">
       CONTINUE
     </ion-button>
   </form>

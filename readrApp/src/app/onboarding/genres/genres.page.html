@@ -13,9 +13,9 @@
   <h1>Genres</h1>
   <p>Let us know what genres you're interested in by adding it to your profile</p>
   <div id="genrebox">
-    <app-genre-chip *ngFor="let genre of genres" [title]="genre"/>
+    <app-genre-chip *ngFor="let genre of genres" [title]="genre.name" (toggledEvent)="genreToggled(genre, $event)"/>
   </div>
-  <ion-button class="readr-button" shape="round" [routerLink]="['/add-books']">
-    CONTINUE
+  <ion-button class="readr-button" shape="round" [disabled]="this.selectedGenres.size < 5" (click)="continueButton()">
+    CONTINUE {{this.selectedGenres.size}}/5
   </ion-button>
 </ion-content>

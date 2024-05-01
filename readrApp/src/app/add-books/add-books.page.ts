@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BookAddSmallCardComponent } from '../book-add-small-card/book-add-small-card.component';
-import BookModel from 'src/models/book-model';
-import { IonBackButton, IonButtons, IonContent, IonHeader, IonToolbar, ModalController } from '@ionic/angular/standalone';
+import BookModel from 'src/models/book';
+import { IonBackButton, IonButtons, IonContent, IonHeader, IonToolbar, ModalController, IonButton } from '@ionic/angular/standalone';
 import { AddBookOptionsModalComponent } from './add-book-options-modal/add-book-options-modal.component';
 import { AddBookManuallyModalComponent } from './add-book-manually-modal/add-book-manually-modal.component';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { BookService } from '../services/book.service';
+import { Observable, zip } from 'rxjs';
 
 
 @Component({
@@ -14,24 +16,35 @@ import { RouterModule } from '@angular/router';
   templateUrl: './add-books.page.html',
   styleUrls: ['./add-books.page.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, BookAddSmallCardComponent, RouterModule, IonHeader, IonToolbar, IonButtons, IonBackButton, IonContent]
+  imports: [IonButton, CommonModule, FormsModule, BookAddSmallCardComponent, RouterModule, IonHeader, IonToolbar, IonButtons, IonBackButton, IonContent]
 })
 export class AddBooksPage {
 
   books: Array<BookModel|undefined> = [
     {
-      id: 4214,
-      title: '20,000 Leaugues Under The Sea',
-      authorName: 'Jules Verne',
-      imageUrl: 'https://images.penguinrandomhouse.com/cover/9780553212525',
-      distanceMeters: 0
+      id: 0,
+      bookTitle: {
+        id: 4214,
+        title: '20,000 Leaugues Under The Sea',
+        author: 'Jules Verne',
+        genre: {
+          id: 1,
+          name: 'Fiction'
+        },
+        coverUrl: 'https://images.penguinrandomhouse.com/cover/9780553212525',
+      }
     },
     {
-      id: 4214,
-      title: '20,000 Leaugues Under The Sea',
-      authorName: 'Jules Verne',
-      imageUrl: '',
-      distanceMeters: 0
+      id: 0,
+      bookTitle: {
+        id: 4214,
+        title: '20,000 Leaugues Under The Sea',
+        author: 'Jules Verne',
+        genre: {
+          id: 1,
+          name: 'Fiction'
+        },
+      }
     },
     undefined,
     undefined,
@@ -39,7 +52,7 @@ export class AddBooksPage {
     undefined,
   ]
 
-  constructor(private modalCtrl: ModalController) { }
+  constructor(private modalCtrl: ModalController, private router: Router, private bookService: BookService) { }
 
 
   async addOrRemoveBookToSlot(slot: number) {
@@ -73,6 +86,22 @@ export class AddBooksPage {
 
       this.books[slot] = data;
     }
+  }
+
+  continueButton() {
+    const requests: Array<Observable<Object>> = [];
+    this.books.forEach(b => {
+      b && requests.push(this.bookService.addBook(b));
+    });
+    zip(...requests).subscribe({
+      next: () => {
+        this.router.navigate(['/']);
+      }
+    })
+  }
+
+  isTrue(el: any) {
+    return !!el;
   }
 
 }
