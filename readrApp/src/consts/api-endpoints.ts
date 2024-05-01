@@ -15,7 +15,9 @@ const API_ENDPOINTS = {
         PREFERED_GENRES: {
             ADD: API_ROOT + 'Genre/prefered'
         }
-    }
+    },
+    SUGGESTIONS: API_ROOT + 'Suggestions',
+    LIKE: API_ROOT + 'Like'
 }
 
 export default API_ENDPOINTS;

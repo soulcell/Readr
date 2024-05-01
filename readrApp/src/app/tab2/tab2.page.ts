@@ -8,6 +8,7 @@ import { addIcons } from 'ionicons';
 import { refreshCircleOutline } from 'ionicons/icons';
 import { RouterModule } from '@angular/router';
 import { IonButton, IonContent, IonHeader, IonIcon, IonToolbar } from '@ionic/angular/standalone';
+import { BookService } from '../services/book.service';
 
 
 @Component({
@@ -74,18 +75,18 @@ export class Tab2Page implements OnInit {
 
     if (event.deltaX > 100)
     {
-      this.cards.shift();
+      this.bookService.like(this.cards.shift()!).subscribe();
       return;
     }
 
     if (event.deltaX < -100)
     {
-      this.cards.shift();
+      this.bookService.dislike(this.cards.shift()!).subscribe();
       return;
     }
   }
 
-  constructor() {
+  constructor(private bookService: BookService) {
     addIcons({refreshCircleOutline})
   }
 
@@ -94,38 +95,9 @@ export class Tab2Page implements OnInit {
   }
 
   loadBooks() {
-    this.cards = [
-      {
-        id: 0,
-        bookTitle: {
-          id: 0,
-          title: "The Picture of Dorian Gray",
-          author: "Oscar Wilde",
-          coverUrl: "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781625587534/the-picture-of-dorian-gray-9781625587534_hr.jpg",
-        },
-        distanceMeters: 1000
-      },
-      {
-        id: 0,
-        bookTitle: {
-          id: 0,
-          title: "The Picture of Dorian Gray",
-          author: "Oscar Wilde",
-          coverUrl: "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781625587534/the-picture-of-dorian-gray-9781625587534_hr.jpg",
-        },
-        distanceMeters: 1000
-      },
-      {
-        id: 0,
-        bookTitle: {
-          id: 0,
-          title: "The Picture of Dorian Gray",
-          author: "Oscar Wilde",
-          coverUrl: "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781625587534/the-picture-of-dorian-gray-9781625587534_hr.jpg",
-        },
-        distanceMeters: 1000
-      },
-    ]
+    this.bookService.getSuggestions().subscribe({
+      next: res => this.cards.push(...res)
+    });
   }
 
 }

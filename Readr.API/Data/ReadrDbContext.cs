@@ -15,6 +15,8 @@ namespace Readr.API.Data
 
         public DbSet<Genre> Genres { get; set; }
 
+        public DbSet<BookLike> BookLikes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -42,6 +44,15 @@ namespace Readr.API.Data
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.PhoneNumber)
                 .IsUnique(true);
+
+            modelBuilder.Entity<BookLike>()
+                .HasOne(bl => bl.User)
+                .WithMany()
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<BookLike>()
+                .HasOne(bl => bl.Book)
+                .WithMany();
         }
     }
 }

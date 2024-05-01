@@ -2,7 +2,7 @@
 {
     public class BookLike : BaseEntity
     {
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         public User User { get; set; }
 
@@ -16,6 +16,8 @@
             Book = book;
             Status = status;
         }
+
+        private BookLike() { }
     }
 
     public enum BookLikeStatus

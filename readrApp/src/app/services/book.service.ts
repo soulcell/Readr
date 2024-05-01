@@ -5,6 +5,7 @@ import API_ENDPOINTS from 'src/consts/api-endpoints';
 import Genre from 'src/models/genre';
 import { tap } from 'rxjs';
 import BookModel from 'src/models/book';
+import BookLikeStatus from 'src/consts/book-like-status';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +37,19 @@ export class BookService {
     };
 
     return this.http.post(API_ENDPOINTS.BOOK.MY_BOOKS, dto);
+  }
+
+  getSuggestions() {
+    return this.http.get<Array<BookModel>>(API_ENDPOINTS.SUGGESTIONS)
+  }
+
+  like(book: BookModel) {
+    const params = new HttpParams().set('bookId', book.id).set('likeStatus', BookLikeStatus.Like)
+    return this.http.post(API_ENDPOINTS.LIKE, null, { params: params });
+  }
+
+  dislike(book: BookModel) {
+    const params = new HttpParams().set('bookId', book.id).set('likeStatus', BookLikeStatus.Dislike);
+    return this.http.post(API_ENDPOINTS.LIKE, null,  { params: params });
   }
 }

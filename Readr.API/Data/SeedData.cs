@@ -50,8 +50,25 @@ namespace Readr.API.Data
                 new BookTitle(0, "The Da Vinci Code", "Dan Brown", genres[1]),
             };
 
+            List<User> users = new()
+            {
+                new User("00000000"),
+                new User("11111111"),
+                new User("22222222")
+            };
+
+            List<Book> books = new()
+            {
+                new Book(0, bookTitles[0], users[0], 0, 0),
+                new Book(0, bookTitles[1], users[1], 0, 0),
+                new Book(0, bookTitles[2], users[0], 0, 0),
+                new Book(0, bookTitles[3], users[1], 0, 0),
+            };
+
             await context.AddRangeAsync(genres);
             await context.AddRangeAsync(bookTitles);
+            await context.AddRangeAsync(users);
+            await context.AddRangeAsync(books);
             await context.SaveChangesAsync();
         }
     }
