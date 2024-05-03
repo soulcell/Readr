@@ -43,17 +43,20 @@ namespace Readr.API.Controllers
 
             var books = this.dbContext.Books
                 .Include(b => b.BookTitle)
+                .Include(b => b.BookTitle.Genre)
+                .Include(b => b.BookTitle.Cover)
+                .Include(b => b.Owner)
                 .Where(b => b.Owner != user)
                 .Where(b => !booksLiked.Contains(b));
 
-            await dbContext.Entry(user).Collection(u => u.PreferedGeneres).LoadAsync();
+            //await dbContext.Entry(user).Collection(u => u.PreferedGeneres).LoadAsync();
 
             if (user.PreferedGeneres.Count > 0)
             {
-                books = books.Where(b => user.PreferedGeneres.Contains(b.BookTitle.Genre));
+                //books = books.Where(b => user.PreferedGeneres.Contains(b.BookTitle.Genre));
             }
 
-            return Ok(books.Take(3));
+            return Ok(books.Select(b => b.AsDto()));
         }
     }
 }

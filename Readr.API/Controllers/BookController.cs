@@ -5,6 +5,7 @@ using Readr.API.Data;
 using Readr.API.DTOs;
 using Readr.API.Models;
 using Readr.API.Services;
+using Readr.API.Utils;
 
 namespace Readr.API.Controllers
 {
@@ -14,11 +15,13 @@ namespace Readr.API.Controllers
     {
         private readonly ReadrDbContext dbContext;
         private readonly IUserService userService;
+        private readonly AddCoverQueue addCoverQueue;
 
-        public BookController(ReadrDbContext dbContext, IUserService userService)
+        public BookController(ReadrDbContext dbContext, IUserService userService, AddCoverQueue addCoverQueue)
         {
             this.dbContext = dbContext;
             this.userService = userService;
+            this.addCoverQueue = addCoverQueue;
         }
 
         [Route("mybooks")]
@@ -82,6 +85,11 @@ namespace Readr.API.Controllers
 
             await dbContext.Books.AddAsync(book);
             await dbContext.SaveChangesAsync();
+
+            if (book.BookTitle.Cover is null)
+            {
+                await addCoverQueue.EnqueueAsync(book);
+            }
 
             return Ok();
         }

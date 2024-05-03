@@ -1,11 +1,10 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Readr.API.Data;
-using Readr.API.Models;
 using Readr.API.Services;
+using Readr.API.Utils;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +20,12 @@ builder.Services.AddTransient<IJwtGenerationService, JwtGenerationService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddSingleton<ISmsService, MockSmsService>();
+builder.Services.AddScoped<IBookCoverService, WeslleyBookCoverService>();
+
+
+builder.Services.AddSingleton<AddCoverQueue, AddCoverQueue>();
+
+builder.Services.AddHostedService<BookProcessor>();
 
 builder.Services.AddSwaggerGen(options =>
 {
