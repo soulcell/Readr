@@ -29,23 +29,30 @@ namespace Readr.API.Services
         {
             await foreach (Book book in addCoverQueue.DequeueAllAsync(cancellationToken))
             {
-                IBookCoverService coverService = serviceScope.ServiceProvider.GetRequiredService<IBookCoverService>();
-                ReadrDbContext dbContext = serviceScope.ServiceProvider.GetRequiredService<ReadrDbContext>();
-
-                dbContext.Attach(book);
-
-                string? coverUrl = await coverService.FindBookCoverUrlAsync(book.BookTitle);
-
-                if (string.IsNullOrWhiteSpace(coverUrl))
+                try
                 {
-                    logger.LogError("Couldn't find cover for book {book}", book.BookTitle.Title);
-                    continue;
+                    IBookCoverService coverService = serviceScope.ServiceProvider.GetRequiredService<IBookCoverService>();
+                    ReadrDbContext dbContext = serviceScope.ServiceProvider.GetRequiredService<ReadrDbContext>();
+
+                    dbContext.Attach(book);
+
+                    string? coverUrl = await coverService.FindBookCoverUrlAsync(book.BookTitle);
+
+                    if (string.IsNullOrWhiteSpace(coverUrl))
+                    {
+                        logger.LogError("Couldn't find cover for book {book}", book.BookTitle.Title);
+                        continue;
+                    }
+
+                    book.BookTitle!.Cover = new BookCover(0, coverUrl);
+
+                    dbContext.BookTitles.Update(book.BookTitle);
+                    await dbContext.SaveChangesAsync();
                 }
-
-                book.BookTitle!.Cover = new BookCover(0, coverUrl);
-
-                dbContext.BookTitles.Update(book.BookTitle);
-                await dbContext.SaveChangesAsync();
+                catch (Exception ex)
+                {
+                    this.logger.LogError(ex.Message);
+                }
             }
         }
 

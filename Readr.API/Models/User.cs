@@ -12,6 +12,8 @@ namespace Readr.API.Models
 
         public ISet<Genre> PreferedGeneres { get; set; } = new HashSet<Genre>();
 
+        public IList<string> ConnectionIds { get; set; } = new List<string>();
+
         public User(string phone)
         {
             PhoneNumber = phone;

@@ -31,21 +31,9 @@ export class AddBooksPage {
           id: 1,
           name: 'Fiction'
         },
-        coverUrl: 'https://images.penguinrandomhouse.com/cover/9780553212525',
       }
     },
-    {
-      id: 0,
-      bookTitle: {
-        id: 4214,
-        title: '20,000 Leaugues Under The Sea',
-        author: 'Jules Verne',
-        genre: {
-          id: 1,
-          name: 'Fiction'
-        },
-      }
-    },
+    undefined,
     undefined,
     undefined,
     undefined,

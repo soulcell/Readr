@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Readr.API.Data;
+using Readr.API.Hubs;
 using Readr.API.Services;
 using Readr.API.Utils;
 using System.Text;
@@ -12,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddSignalR();
 builder.Services.AddLogging();
 
 
@@ -26,6 +28,7 @@ builder.Services.AddScoped<IBookCoverService, WeslleyBookCoverService>();
 builder.Services.AddSingleton<AddCoverQueue, AddCoverQueue>();
 
 builder.Services.AddHostedService<BookProcessor>();
+builder.Services.AddHostedService<MutualLikesService>();
 
 builder.Services.AddSwaggerGen(options =>
 {
@@ -69,6 +72,21 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
             )
         };
         options.SaveToken = true;
+        options.Events = new JwtBearerEvents()
+        {
+            OnMessageReceived = context =>
+            {
+                var accessToken = context.Request.Query["access_token"];
+
+                var path = context.HttpContext.Request.Path;
+                if (!string.IsNullOrEmpty(accessToken) &&
+                    (path.StartsWithSegments("/Notification")))
+                {
+                    context.Token = accessToken;
+                }
+                return Task.CompletedTask;
+            }
+        };
     });
 
 builder.Services.AddDbContext<ReadrDbContext>(options =>
@@ -107,5 +125,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<NotificationHub>("/Notification");
 
 app.Run();

@@ -9,6 +9,7 @@ import { refreshCircleOutline } from 'ionicons/icons';
 import { RouterModule } from '@angular/router';
 import { IonButton, IonContent, IonHeader, IonIcon, IonToolbar } from '@ionic/angular/standalone';
 import { BookService } from '../services/book.service';
+import { NotificationService } from '../services/notification.service';
 
 
 @Component({
@@ -86,12 +87,13 @@ export class Tab2Page implements OnInit {
     }
   }
 
-  constructor(private bookService: BookService) {
+  constructor(private bookService: BookService, private notificationService: NotificationService) {
     addIcons({refreshCircleOutline})
   }
 
   ngOnInit() {
     this.loadBooks();
+    this.notificationService.startConnectionIfNotStarted();
   }
 
   loadBooks() {

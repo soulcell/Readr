@@ -19,5 +19,15 @@ namespace Readr.API.DTOs
                 }
             };
         }
+
+        public static UserDto AsDto(this User user)
+        {
+            return new UserDto()
+            {
+                Id = user.Id,
+                Name = user.UserName,
+                Phone = user.PhoneNumber,
+            };
+        }
     }
 }

@@ -24,5 +24,6 @@
     {
         Dislike = 0,
         Like = 1,
+        Notified = 2,
     }
 }

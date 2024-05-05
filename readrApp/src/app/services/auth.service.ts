@@ -40,6 +40,10 @@ export class AuthService {
     )
   }
 
+  getToken() {
+    return localStorage.getItem(AUTH_TOKEN) || '';
+  }
+
   private setToken(token: string) {
     localStorage.setItem(AUTH_TOKEN, token);
   }

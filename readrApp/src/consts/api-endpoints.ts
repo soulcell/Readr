@@ -17,7 +17,8 @@ const API_ENDPOINTS = {
         }
     },
     SUGGESTIONS: API_ROOT + 'Suggestions',
-    LIKE: API_ROOT + 'Like'
+    LIKE: API_ROOT + 'Like',
+    NOTIFICATION: API_ROOT + 'Notification'
 }
 
 export default API_ENDPOINTS;
