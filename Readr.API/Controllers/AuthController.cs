@@ -41,7 +41,8 @@ namespace Readr.API.Controllers
         public async Task<IActionResult> GetSecurityCode([FromBody] GetSecurityCodeDto dto)
         {
             string code = authService.GetSecurityCode(dto.Phone);
-            bool smsResult = await smsService.Send(dto.Phone, code);
+            string codeMessage = $"Your Readr code: {code}";
+            bool smsResult = await smsService.Send(dto.Phone, codeMessage);
 
             return smsResult ? Ok() : StatusCode(500);
         }

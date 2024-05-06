@@ -21,7 +21,15 @@ builder.Services.AddSingleton<IAuthService, AuthService>();
 builder.Services.AddTransient<IJwtGenerationService, JwtGenerationService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
-builder.Services.AddSingleton<ISmsService, MockSmsService>();
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddSingleton<ISmsService, TwilioSmsService>();
+} 
+else
+{
+    builder.Services.AddSingleton<ISmsService, TwilioSmsService>();
+}
+
 builder.Services.AddScoped<IBookCoverService, WeslleyBookCoverService>();
 
 

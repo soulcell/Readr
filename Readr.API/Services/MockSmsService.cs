@@ -9,10 +9,10 @@
             this.logger = logger;
         }
 
-        public async Task<bool> Send(string phone, string message)
+        public Task<bool> Send(string phone, string message)
         {
             logger.Log(LogLevel.Information, "Mocking SMS to {1}, body: \"{2}\"", phone, message);
-            return await Task.FromResult(true);
+            return Task.FromResult(true);
         }
     }
 }
